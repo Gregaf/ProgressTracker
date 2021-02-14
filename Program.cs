@@ -20,8 +20,8 @@ namespace ProgressTracker
             builder.ConfigureAppConfiguration(x =>
             {
                 ConfigurationBuilder configuration = new ConfigurationBuilder();
-                configuration.SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("config.json", false, true);
-
+                configuration.SetBasePath($"{Directory.GetCurrentDirectory()}/Configurations/").AddJsonFile("config.json", false, true);
+                
                 IConfigurationRoot root = configuration.Build();
 
                 x.AddConfiguration(root);
