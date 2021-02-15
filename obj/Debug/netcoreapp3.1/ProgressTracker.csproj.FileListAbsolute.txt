@@ -30,7 +30,6 @@ C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\obj\Debug\netcoreapp3
 C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\obj\Debug\netcoreapp3.1\ProgressTracker.genruntimeconfig.cache
 C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
 C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\bin\Debug\netcoreapp3.1\System.Text.Json.dll
-C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\bin\Debug\netcoreapp3.1\config.json
 C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\bin\Debug\netcoreapp3.1\Discord.Addons.Hosting.dll
 C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Greg\source\repos\ProgressTracker\ProgressTracker\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.CommandLine.dll
