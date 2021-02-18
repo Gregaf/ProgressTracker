@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using System.IO;
 using Discord.Commands;
 using ProgressTracker.Services;
+using System;
 
 namespace ProgressTracker
 {
@@ -20,7 +21,7 @@ namespace ProgressTracker
             builder.ConfigureAppConfiguration(x =>
             {
                 ConfigurationBuilder configuration = new ConfigurationBuilder();
-                configuration.SetBasePath($"{Directory.GetCurrentDirectory()}/Configurations/").AddJsonFile("config.json", false, true);
+                configuration.SetBasePath($"{Directory.GetCurrentDirectory()}/Configurations").AddJsonFile("config.json", false, true);
                 
                 IConfigurationRoot root = configuration.Build();
 
@@ -42,7 +43,7 @@ namespace ProgressTracker
                     MessageCacheSize = 200
                 };
 
-                config.Token = context.Configuration["token"];
+                config.Token = context.Configuration["DToken"];
             });
 
             builder.UseCommandService((context, config) =>
@@ -54,15 +55,23 @@ namespace ProgressTracker
                 };
 
             });
+            
+            
 
             builder.ConfigureServices((context, services) =>
             {
-                services.AddHostedService<CommandHandler>();
+                services.AddScoped(typeof(IProjectService), typeof(ProjectService));
+                services.AddSingleton(typeof(IHostedService), typeof(CommandHandler));
+                       
+                        
             });
 
             builder.UseConsoleLifetime();
 
             IHost host = builder.Build();
+
+            
+
             using (host)
             {
                 await host.RunAsync();

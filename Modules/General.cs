@@ -4,19 +4,26 @@ using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProgressTracker.Services;
 
 namespace ProgressTracker.Modules
 {
     public class General : ModuleBase<SocketCommandContext>
     {
         private readonly ILogger<General> _logger;
-        public General(ILogger<General> logger) => _logger = logger;   
-     
+
+        public General(ILogger<General> logger)
+        {
+            _logger = logger;
+        }
+        
 
         [Command("ping")]
         public async Task Ping()
         {
+
             await ReplyAsync("Pong!");
             _logger.LogInformation($"{Context.User.Username} executed the ping command!");
         }

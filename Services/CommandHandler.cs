@@ -7,18 +7,20 @@ using Discord.Addons.Hosting;
 using Microsoft.Extensions.Hosting;
 using System.Threading;
 using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 using Discord;
 
 namespace ProgressTracker.Services
 {
     public class CommandHandler : InitializedService
     {
-        public static IServiceProvider _provider;
+        public IServiceProvider _provider;
         public static DiscordSocketClient _client;
         public static CommandService _service;
         public static IConfiguration _config;
-
-        public CommandHandler(DiscordSocketClient discord, CommandService commands, IConfiguration config, IServiceProvider provider)
+        public static IProjectService projectService;
+        
+        public CommandHandler(DiscordSocketClient discord, CommandService commands,IConfiguration config, IServiceProvider provider)
         {
             _provider = provider;
             _client = discord;
@@ -28,11 +30,12 @@ namespace ProgressTracker.Services
 
         public override async Task InitializeAsync(CancellationToken cancellationToken)
         {
+            await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
+
             _client.MessageReceived += OnMessageReceived;
             _client.ChannelCreated += OnChannelCreated;
             _service.CommandExecuted += OnCommandExecuted;
             _client.JoinedGuild += OnJoinedGuild;
-            await _service.AddModulesAsync(Assembly.GetEntryAssembly(), _provider);
         }
 
         private async Task OnJoinedGuild(SocketGuild arg)

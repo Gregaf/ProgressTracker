@@ -8,6 +8,16 @@
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Configurations\config.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Configurations\config.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Discord.Addons.Hosting" Version="3.1.1" />
