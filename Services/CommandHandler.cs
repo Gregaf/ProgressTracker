@@ -15,10 +15,9 @@ namespace ProgressTracker.Services
     public class CommandHandler : InitializedService
     {
         public IServiceProvider _provider;
-        public static DiscordSocketClient _client;
-        public static CommandService _service;
-        public static IConfiguration _config;
-        public static IProjectService projectService;
+        public DiscordSocketClient _client;
+        public CommandService _service;
+        public IConfiguration _config;
         
         public CommandHandler(DiscordSocketClient discord, CommandService commands,IConfiguration config, IServiceProvider provider)
         {

@@ -60,7 +60,7 @@ namespace ProgressTracker
 
             builder.ConfigureServices((context, services) =>
             {
-                services.AddScoped(typeof(IProjectService), typeof(ProjectService));
+                services.AddSingleton(typeof(IProjectService), typeof(ProjectService));
                 services.AddSingleton(typeof(IHostedService), typeof(CommandHandler));
                        
                         
@@ -69,9 +69,7 @@ namespace ProgressTracker
             builder.UseConsoleLifetime();
 
             IHost host = builder.Build();
-
-            
-
+                       
             using (host)
             {
                 await host.RunAsync();

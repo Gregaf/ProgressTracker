@@ -6,12 +6,17 @@ namespace ProgressTracker.Services
 {
     public interface IProjectService : IHostedService
     {
+        Task<string[]> GetProjectNames();
+        string DisplayCurrentProject();
+        Task SetWorkingOrg(string orgName);
+        Task SetWorkingProject(string projectName);
         Task<JObject> GetProjectInformation();
-        Task<bool> CreateProject(string path, string name, string description);
-        Task<bool> AddColumn();
-        Task<bool> AddCard();
+        Task<bool> CreateProject(string name, string description);
+        Task<bool> DeleteProject();
+        Task<bool> AddColumn(string name);
+        Task<bool> AddCard(string columnName, string body);
         Task<bool> RemoveProject();
-        Task<bool> RemoveColumn();
+        Task<bool> RemoveColumn(string headerName);
         Task<bool> RemoveCard();
     }
 }
